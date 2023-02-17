@@ -1,0 +1,3 @@
+base_global_planner: navfn/NavfnROS
+NavfnROS:
+  allow_unknown: false

@@ -1,0 +1,6 @@
+<launch>
+    <node name="ascending_stairs" pkg="stairdetection" type="stairdetection">
+    </node>
+     <node name="descending_stairs" pkg="stairdetection" type="stairdetection">
+    </node>
+</launch>

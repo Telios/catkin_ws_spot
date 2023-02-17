@@ -1,0 +1,35 @@
+{
+  "configurations": [
+    {
+      "browse": {
+        "databaseFilename": "${default}",
+        "limitSymbolsToIncludedHeaders": false
+      },
+      "includePath": [
+        "/home/mohi/catkin_ws/devel/include/**",
+        "/opt/ros/melodic/include/**",
+        "/home/mohi/catkin_ws/src/Azure_Kinect_ROS_Driver/include/**",
+        "/home/mohi/catkin_ws/src/mrvr-main/packages/code_packages/L1_integration/Universal_Robots_ROS_Driver/controller_stopper/include/**",
+        "/home/mohi/catkin_ws/src/hello_world_pkg/include/**",
+        "/home/mohi/catkin_ws/src/mrvr-main/packages/code_packages/L4_nav_planning/mrvr_hl_navigation/include/**",
+        "/home/mohi/catkin_ws/src/mrvr-main/packages/code_packages/L1_integration/gripper/robotiq_2f_gripper_control/include/**",
+        "/home/mohi/catkin_ws/src/mrvr-main/packages/code_packages/L1_integration/gripper/robotiq_ethercat/include/**",
+        "/home/mohi/catkin_ws/src/mrvr-main/packages/code_packages/L1_integration/gripper/robotiq_ft_sensor/include/**",
+        "/home/mohi/catkin_ws/src/mrvr-main/packages/code_packages/L1_integration/gripper/robotiq_modbus_sim/include/**",
+        "/home/mohi/catkin_ws/src/mrvr-main/packages/code_packages/dependencies/detached/summit_xl_robot/safety_module/include/**",
+        "/home/mohi/catkin_ws/src/mrvr-main/packages/code_packages/dependencies/detached/summit_xl_robot/summit_x_controller/include/**",
+        "/home/mohi/catkin_ws/src/mrvr-main/packages/code_packages/dependencies/detached/summit_xl_robot/summit_xl_controller/include/**",
+        "/home/mohi/catkin_ws/src/mrvr-main/packages/code_packages/L1_integration/Universal_Robots_ROS_Driver/ur_calibration/include/**",
+        "/home/mohi/catkin_ws/src/mrvr-main/packages/code_packages/L1_integration/universal_robot/ur_kinematics/include/**",
+        "/home/mohi/catkin_ws/src/mrvr-main/packages/code_packages/L1_integration/Universal_Robots_ROS_Driver/ur_robot_driver/include/**",
+        "/usr/include/**"
+      ],
+      "name": "ROS",
+      "intelliSenseMode": "gcc-x64",
+      "compilerPath": "/usr/bin/gcc",
+      "cStandard": "gnu11",
+      "cppStandard": "c++14"
+    }
+  ],
+  "version": 4
+}
