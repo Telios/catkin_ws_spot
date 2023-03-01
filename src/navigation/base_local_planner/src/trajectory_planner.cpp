@@ -697,6 +697,52 @@ namespace base_local_planner{
       vtheta_samp += dvtheta;
     }
 
+    //only explore y velocities with holonomic robots
+    if (holonomic_robot_) {
+      //if we can't rotate in place or move forward... maybe we can move sideways and rotate
+      vtheta_samp = min_vel_theta;
+      vx_samp = 0.0;
+
+      //loop through all y velocities
+      for(unsigned int i = 0; i < y_vels_.size(); ++i){
+        vtheta_samp = 0;
+        vy_samp = y_vels_[i];
+        //sample completely horizontal trajectories
+        generateTrajectory(x, y, theta, vx, vy, vtheta, vx_samp, vy_samp, vtheta_samp,
+            acc_x, acc_y, acc_theta, impossible_cost, *comp_traj);
+
+        //if the new trajectory is better... let's take it
+        if(comp_traj->cost_ >= 0 && (comp_traj->cost_ <= best_traj->cost_ || best_traj->cost_ < 0)){
+          double x_r, y_r, th_r;
+          comp_traj->getEndpoint(x_r, y_r, th_r);
+          x_r += heading_lookahead_ * cos(th_r);
+          y_r += heading_lookahead_ * sin(th_r);
+          unsigned int cell_x, cell_y;
+
+          //make sure that we'll be looking at a legal cell
+          if(costmap_.worldToMap(x_r, y_r, cell_x, cell_y)) {
+            double ahead_gdist = goal_map_(cell_x, cell_y).target_dist;
+            if (ahead_gdist < heading_dist) {
+              //if we haven't already tried strafing left since we've moved forward
+              if (vy_samp > 0 && !stuck_left_strafe) {
+                swap = best_traj;
+                best_traj = comp_traj;
+                comp_traj = swap;
+                heading_dist = ahead_gdist;
+              }
+              //if we haven't already tried rotating right since we've moved forward
+              else if(vy_samp < 0 && !stuck_right_strafe) {
+                swap = best_traj;
+                best_traj = comp_traj;
+                comp_traj = swap;
+                heading_dist = ahead_gdist;
+              }
+            }
+          }
+        }
+      }
+    }
+
     //do we have a legal trajectory
     if (best_traj->cost_ >= 0) {
       // avoid oscillations of in place rotation and in place strafing

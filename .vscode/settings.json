@@ -1,0 +1,12 @@
+{
+    "python.autoComplete.extraPaths": [
+        "/home/spot/catkin_ws/devel_isolated/move_base/lib/python3/dist-packages",
+        "/home/spot/catkin_ws/install_isolated/lib/python3/dist-packages",
+        "/opt/ros/melodic/lib/python2.7/dist-packages"
+    ],
+    "python.analysis.extraPaths": [
+        "/home/spot/catkin_ws/devel_isolated/move_base/lib/python3/dist-packages",
+        "/home/spot/catkin_ws/install_isolated/lib/python3/dist-packages",
+        "/opt/ros/melodic/lib/python2.7/dist-packages"
+    ]
+}
