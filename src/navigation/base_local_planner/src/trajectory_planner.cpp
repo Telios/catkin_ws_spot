@@ -132,7 +132,7 @@ namespace base_local_planner{
           double temp;
           iss >> temp;
           y_vels.push_back(temp);
-          //ROS_INFO("Adding y_vel: %e", temp);
+          ROS_INFO("Adding y_vel: %e", temp);
       }
 
       y_vels_ = y_vels;
@@ -564,7 +564,7 @@ namespace base_local_planner{
     //we want to sample the velocity space regularly
     double dvx = (max_vel_x - min_vel_x) / (vx_samples_ - 1);
     double dvtheta = (max_vel_theta - min_vel_theta) / (vtheta_samples_ - 1);
-
+    
     double vx_samp = min_vel_x;
     double vtheta_samp = min_vel_theta;
     double vy_samp = 0.0;
@@ -617,8 +617,8 @@ namespace base_local_planner{
       //only explore y velocities with holonomic robots
       if (holonomic_robot_) {
         //explore trajectories that move forward but also strafe slightly
-        vx_samp = 0.1;
-        vy_samp = 0.1;
+        vx_samp = 0.2;
+        vy_samp = 0.2;
         vtheta_samp = 0.0;
         generateTrajectory(x, y, theta, vx, vy, vtheta, vx_samp, vy_samp, vtheta_samp,
             acc_x, acc_y, acc_theta, impossible_cost, *comp_traj);
@@ -630,8 +630,33 @@ namespace base_local_planner{
           comp_traj = swap;
         }
 
-        vx_samp = 0.1;
-        vy_samp = -0.1;
+        vx_samp = 0.2;
+        vy_samp = -0.2;
+        vtheta_samp = 0.0;
+        generateTrajectory(x, y, theta, vx, vy, vtheta, vx_samp, vy_samp, vtheta_samp,
+            acc_x, acc_y, acc_theta, impossible_cost, *comp_traj);
+
+        //if the new trajectory is better... let's take it
+        if(comp_traj->cost_ >= 0 && (comp_traj->cost_ < best_traj->cost_ || best_traj->cost_ < 0)){
+          swap = best_traj;
+          best_traj = comp_traj;
+          comp_traj = swap;
+        }
+        vx_samp = 0.3;
+        vy_samp = 0.3;
+        vtheta_samp = 0.0;
+        generateTrajectory(x, y, theta, vx, vy, vtheta, vx_samp, vy_samp, vtheta_samp,
+            acc_x, acc_y, acc_theta, impossible_cost, *comp_traj);
+
+        //if the new trajectory is better... let's take it
+        if(comp_traj->cost_ >= 0 && (comp_traj->cost_ < best_traj->cost_ || best_traj->cost_ < 0)){
+          swap = best_traj;
+          best_traj = comp_traj;
+          comp_traj = swap;
+        }
+
+        vx_samp = 0.3;
+        vy_samp = -0.3;
         vtheta_samp = 0.0;
         generateTrajectory(x, y, theta, vx, vy, vtheta, vx_samp, vy_samp, vtheta_samp,
             acc_x, acc_y, acc_theta, impossible_cost, *comp_traj);

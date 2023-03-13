@@ -763,7 +763,7 @@ BaseLocalPlannerConfig::GroupDescription<BaseLocalPlannerConfig::DEFAULT, BaseLo
 //#line 291 "/opt/ros/melodic/lib/python2.7/dist-packages/dynamic_reconfigure/parameter_generator_catkin.py"
       __max__.y_vels = "";
 //#line 291 "/opt/ros/melodic/lib/python2.7/dist-packages/dynamic_reconfigure/parameter_generator_catkin.py"
-      __default__.y_vels = "-0.5,-0.4,-0.3,-0.2,0.2,0.3,0.4,0.5";
+      __default__.y_vels = "-0.3,-0.2,0.2,0.3";
 //#line 291 "/opt/ros/melodic/lib/python2.7/dist-packages/dynamic_reconfigure/parameter_generator_catkin.py"
       Default.abstract_parameters.push_back(BaseLocalPlannerConfig::AbstractParamDescriptionConstPtr(new BaseLocalPlannerConfig::ParamDescription<std::string>("y_vels", "str", 0, "A comma delimited list of the y velocities the controller will explore", "", &BaseLocalPlannerConfig::y_vels)));
 //#line 291 "/opt/ros/melodic/lib/python2.7/dist-packages/dynamic_reconfigure/parameter_generator_catkin.py"
