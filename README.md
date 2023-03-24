@@ -45,7 +45,7 @@ Then after connecting with Spot via Wi-Fi (passwd: `***REMOVED***`), run the fol
 
     ssh -4 -p 20022 spot@192.168.80.3 -L 21000:127.0.0.1:21000
 
-Afterwards, run the following command to connect to SpotCORE via VNC:
+Open a new terminal tab and run the following command to connect to SpotCORE via VNC:
 
     vncviewer localhost:21000
 
