@@ -35,21 +35,7 @@ After building you have to source your workspace:
 
     source ~/catkin_ws/install_isolated/setup.bash
 
-## Connecting to SpotCORE
 
-To connect to SpotCORE, you need to have installed `vncviewer`. To install it, run the following command:
-
-    sudo apt install tigervnc-viewer
-
-Then after connecting with Spot via Wi-Fi (passwd: `***REMOVED***`), run the following command to connect to SpotCORE via ssh:
-
-    ssh -4 -p 20022 spot@192.168.80.3 -L 21000:127.0.0.1:21000
-
-Afterwards, run the following command to connect to SpotCORE via VNC:
-
-    vncviewer localhost:21000
-
-The password is `***REMOVED***`. This password is the general admin password for SpotCORE and is asked everytime admin priviliges are needed. Further information can be found in the [Spot SDK](https://dev.bostondynamics.com/docs/payload/spot_core_vnc).
 
 ## System Overview
 The following image shows the system overview of our Spot Autonomous Exploration System.
@@ -68,12 +54,43 @@ Here is a more detailed overview of the ROS system, showing the topics and nodes
 
 ## Running the System
 
-To run the system a few nodes need to be started. In general the following nodes need to be started in this order in separate windows:
+### Connecting to SpotCORE
+
+To connect to SpotCORE, you need to have installed `vncviewer`. To install it, run the following command:
+
+    sudo apt install tigervnc-viewer
+
+Then after connecting with Spot via Wi-Fi (passwd: `***REMOVED***`), run the following command to connect to SpotCORE via ssh (pwd is `***REMOVED***`):
+
+    ssh -4 -p 20022 spot@192.168.80.3 -L 21000:127.0.0.1:21000
+
+Afterwards, CTRL + SHIFT + T for a new terminal window and run the following command to connect to SpotCORE via VNC:
+
+    vncviewer localhost:21000
+
+The password is `***REMOVED***`. This password is the general admin password for SpotCORE and is asked everytime admin priviliges are needed. Further information can be found in the [Spot SDK](https://dev.bostondynamics.com/docs/payload/spot_core_vnc).
+
+### Exploration
+To run the system a few nodes need to be started. Start a new terminal shell by clicking on Activities on the top left corner and type in terminal. Open the programe called Terminal. 
+
+If you first start the terminal you will see that you are located in ~. To change this use the command 
+
+    cd cartographer_ws
+
+Then, open a new terminal to source the correct workspace by clicking CTRL + SHIFT + T. You should see that the correct workspace was sourced.
+
+In general the following nodes need to be started in this order in separate windows:
 
     roslaunch spot_driver driver.launch
     roslaunch cartographer_ros spot.launch
     roslaunch spot_viz view_robot.launch
     roslaunch move_base move_base.launch
+
+This can be done automatically by typing in:
+
+    tmuxinator
+
+You should see 5 different terminal windows that open with the respective nodes. The fifth window is to claim Spot and power it on.
 
 Before starting the exploration, SpotCORE needs to claim the robot. Make sure the robot is sitting on the floor and powered off and release the control via the tablet. After that run the following command:
 
