@@ -1,0 +1,12 @@
+version: '3'
+
+services:
+  publisher:
+    build:
+      context: ./
+      dockerfile: publisher.Dockerfile
+
+  ros2:
+    build:
+      context: ./
+      dockerfile: ros2.Dockerfile
