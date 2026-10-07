@@ -1,6 +1,6 @@
 <launch>
   <arg name="username" default="ros" />
-  <arg name="password" default="***REMOVED***" />
+  <arg name="password" />
   <arg name="hostname" default="192.168.50.3" />
   <arg name="estop_timeout" default="9.0"/>
 

@@ -9,7 +9,6 @@
   - [Running the System](#running-the-system)
   - [Limitations](#limitations)
 - [General Spot Information](#general-spot-information)
-  - [Credentials](#credentials)
   - [Troubleshooting](#troubleshooting)
     - [LiDAR not detected (Autowalk)](#lidar-not-detected-autowalk)
 
