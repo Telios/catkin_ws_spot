@@ -60,7 +60,7 @@ To connect to SpotCORE, you need to have installed `vncviewer`. To install it, r
 
     sudo apt install tigervnc-viewer
 
-Then after connecting with Spot via Wi-Fi (passwd: `***REMOVED***`), run the following command to connect to SpotCORE via ssh (pwd is `***REMOVED***`):
+Then after connecting with Spot via Wi-Fi, run the following command to connect to SpotCORE via ssh:
 
     ssh -4 -p 20022 spot@192.168.80.3 -L 21000:127.0.0.1:21000
 
@@ -68,7 +68,7 @@ Afterwards, CTRL + SHIFT + T for a new terminal window and run the following com
 
     vncviewer localhost:21000
 
-The password is `***REMOVED***`. This password is the general admin password for SpotCORE and is asked everytime admin priviliges are needed. Further information can be found in the [Spot SDK](https://dev.bostondynamics.com/docs/payload/spot_core_vnc).
+Further information can be found in the [Spot SDK](https://dev.bostondynamics.com/docs/payload/spot_core_vnc).
 
 ### Exploration
 To run the system a few nodes need to be started. Start a new terminal shell by clicking on Activities on the top left corner and type in terminal. Open the programe called Terminal. 
@@ -81,7 +81,7 @@ Then, open a new terminal to source the correct workspace by clicking CTRL + SHI
 
 In general the following nodes need to be started in this order in separate windows:
 
-    roslaunch spot_driver driver.launch
+    roslaunch spot_driver driver.launch password:=<spot password>
     roslaunch cartographer_ros spot.launch
     roslaunch spot_viz view_robot.launch
     roslaunch move_base move_base.launch
@@ -114,19 +114,6 @@ With our current System setup there are a few limitations. The most important on
 - Currently the exploration only works on one floor. If the robot comes near a descending stair it would fall down the stairs as Spot only can descend stairs walking backwards. This will be fixed in the future when implementing a multi-floor exploration system.
 
 # General Spot Information
-
-## Credentials
-
-The following credentials are used on Spot:
-
-    SpotCORE:
-    - VNC/root: ***REMOVED***
-    
-    Spot:
-    - Wi-Fi: ***REMOVED***
-    - Tablet/Web:
-        - username: admin (password: ***REMOVED***)
-        - username: user  (password: ***REMOVED***)
 
 ## Troubleshooting
 
